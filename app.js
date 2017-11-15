@@ -37,6 +37,7 @@ dotenv.load({ path: '.env' });
  * Controllers (route handlers).
  */
 const apiController = require('./controllers/api');
+const productController = require('./controllers/product');
 
 /**
  * Create Express server.
@@ -79,6 +80,14 @@ app.use(
  * Primary app routes.
  */
 app.post('/api/upload', upload.single('avatar'), apiController.postFileUpload);
+
+/**
+ * Product routes.
+ */
+app
+  .route('/api/products')
+  .get(productController.getProducts)
+  .post(productController.postProduct);
 
 /**
  * Error Handler.
