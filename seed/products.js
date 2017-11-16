@@ -55,7 +55,7 @@ exports.addProducts = async () => {
           availability: faker.random.arrayElement(['out-stock', 'in-stock']),
         },
       },
-      files: ['5a0d3dc1adbc543c982c72de', '5a0d404d07559845920f3d53'],
+      files: ['5a0d3dc1adbc543c982c72de', '5a0d404d07559845920f3d53', '5a0db68e026a667abfb567a1'],
     });
     // Add the newly created product to the products array
     products.push(product);
