@@ -22,5 +22,6 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('connected', async () => {
   console.log('%s MongoDB connection sucess.', chalk.green('✓'));
 
-  addProducts();
+  await addProducts();
+  process.exit();
 });

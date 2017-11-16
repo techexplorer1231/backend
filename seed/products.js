@@ -1,5 +1,5 @@
-const async = require('async');
 const faker = require('faker');
+const chalk = require('chalk');
 const Product = require('../models/Product');
 
 exports.addProducts = async () => {
@@ -60,32 +60,6 @@ exports.addProducts = async () => {
     products.push(product);
   }
 
-  async.each(
-    // 1st parameter is the 'products' array to iterate over
-    products,
-
-    // 2nd parameter is a function takes each product in
-    // the 'products' array as an argument and a callback
-    // function that needs to be executed when the
-    // asynchronous call completes
-    (product, callback) => {
-      // Call product.save which is asynchronous function
-      product.save(() => {
-        // The asyncrhonous DB save call is done,
-        // execute callback function to alert
-        // async.each to move on to the next product
-        // object in the array
-        callback();
-      });
-    },
-
-    // 3rd parameter is a function to call when all
-    // products in 'products' array have completed their
-    // asynchronous product.save function
-    () => {
-      // All tasks complete
-      console.log('Finished inserting 1000 products');
-      process.exit();
-    },
-  );
+  await Product.create(products);
+  console.log('%s 1000 products added.', chalk.green('✓'));
 };
