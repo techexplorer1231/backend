@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
+const slug = require('slug');
 
 const productSchema = new mongoose.Schema(
   {
@@ -41,6 +42,12 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+/* eslint-disable */
+productSchema.pre('save', function(next) {
+  this.slug = slug(this.name);
+  next();
+});
+/* eslint-enable */
 
 productSchema.plugin(mongoosePaginate);
 const Product = mongoose.model('Product', productSchema);

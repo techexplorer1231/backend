@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const { addProducts } = require('./products');
+const { addCategories } = require('./category');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -23,5 +24,6 @@ mongoose.connection.on('connected', async () => {
   console.log('%s MongoDB connection sucess.', chalk.green('✓'));
 
   await addProducts();
+  await addCategories();
   process.exit();
 });

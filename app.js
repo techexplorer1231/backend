@@ -38,6 +38,7 @@ dotenv.load({ path: '.env' });
  */
 const fileController = require('./controllers/file');
 const productController = require('./controllers/product');
+const categoryController = require('./controllers/category');
 
 /**
  * Create Express server.
@@ -91,6 +92,17 @@ app
 
 app.get('/api/products/:id', productController.getProduct);
 app.get('/api/products/:page/:limit', productController.paginateProduct);
+
+/**
+ * Category routes.
+ */
+app
+  .route('/api/categories')
+  .get(categoryController.listCategories)
+  .post(categoryController.postCategory);
+
+app.get('/api/categories/:id', categoryController.getCategory);
+app.get('/api/categories/:page/:limit', categoryController.paginateCategory);
 
 /**
  * Error Handler.
