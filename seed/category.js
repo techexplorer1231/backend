@@ -18,6 +18,7 @@ exports.addCategories = async () => {
       slug: faker.lorem.slug(),
       description: faker.lorem.sentences(),
       status: faker.random.arrayElement(['draft', 'live']),
+      files: ['5a0d3dc1adbc543c982c72de', '5a0d404d07559845920f3d53'],
     });
     // Add the newly created category to the categories array
     categories.push(category);
