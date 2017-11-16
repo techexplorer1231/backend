@@ -85,6 +85,7 @@ exports.addProducts = async () => {
     () => {
       // All tasks complete
       console.log('Finished inserting 1000 products');
+      process.exit();
     },
   );
 };

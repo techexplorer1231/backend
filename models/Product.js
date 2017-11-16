@@ -4,7 +4,6 @@ const productSchema = new mongoose.Schema(
   {
     name: String,
     slug: String,
-    sku: String,
     description: String,
     manage_stock: Boolean,
     price: [
