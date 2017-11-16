@@ -1,4 +1,3 @@
-// const User = require('../models/User');
 const Product = require('../models/Product');
 
 exports.getProducts = (req, res, next) => {

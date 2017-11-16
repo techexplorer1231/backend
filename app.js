@@ -36,7 +36,7 @@ dotenv.load({ path: '.env' });
 /**
  * Controllers (route handlers).
  */
-const apiController = require('./controllers/api');
+const fileController = require('./controllers/file');
 const productController = require('./controllers/product');
 
 /**
@@ -79,7 +79,7 @@ app.use(
 /**
  * Primary app routes.
  */
-app.post('/api/upload', upload.single('avatar'), apiController.postFileUpload);
+app.post('/api/upload', upload.single('avatar'), fileController.postFileUpload);
 
 /**
  * Product routes.

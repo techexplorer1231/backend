@@ -22,14 +22,5 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('connected', async () => {
   console.log('%s MongoDB connection sucess.', chalk.green('✓'));
 
-  // Clear all collections
-  const { collections } = mongoose.connection;
-  const promises = [];
-  Object.keys(collections).forEach((collection) => {
-    promises.push(collections[collection].remove());
-  });
-  await Promise.all(promises);
-  console.log('All collections cleared!');
-
   addProducts();
 });

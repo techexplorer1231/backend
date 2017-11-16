@@ -2,13 +2,16 @@ const async = require('async');
 const faker = require('faker');
 const Product = require('../models/Product');
 
-exports.addProducts = () => {
+exports.addProducts = async () => {
   // Perform data seeding
+
   // Create an empty array that will be used in async.each
-  console.log('started inserting 1000 products');
+  console.log('removed previous products data');
+  await Product.remove({});
+
+  console.log('start inserting 1000 products');
   const products = [];
 
-  // Create 1000 User mongoose objects
   for (let i = 0; i < 1000; i++) {
     const product = new Product({
       name: faker.commerce.productName(),
