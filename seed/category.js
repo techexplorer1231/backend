@@ -6,7 +6,7 @@ exports.addCategories = async () => {
   // Perform data seeding
 
   // Create an empty array that will be used in async.each
-  console.log('removed previous categories data');
+  console.log('%s Removed categories.', chalk.red('✗'));
   await Category.remove({});
 
   console.log('start inserting 1000 categories');

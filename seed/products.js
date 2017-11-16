@@ -6,7 +6,7 @@ exports.addProducts = async () => {
   // Perform data seeding
 
   // Create an empty array that will be used in async.each
-  console.log('removed previous products data');
+  console.log('%s Removed products.', chalk.red('✗'));
   await Product.remove({});
 
   console.log('start inserting 1000 products');

@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const chalk = require('chalk');
 const { addProducts } = require('./products');
 const { addCategories } = require('./category');
+const { addCollections } = require('./collection');
+const { addBrands } = require('./brand');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -25,5 +27,7 @@ mongoose.connection.on('connected', async () => {
 
   await addProducts();
   await addCategories();
+  await addCollections();
+  await addBrands();
   process.exit();
 });

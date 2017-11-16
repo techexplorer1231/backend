@@ -39,6 +39,8 @@ dotenv.load({ path: '.env' });
 const fileController = require('./controllers/file');
 const productController = require('./controllers/product');
 const categoryController = require('./controllers/category');
+const collectionController = require('./controllers/collection');
+const brandController = require('./controllers/brand');
 
 /**
  * Create Express server.
@@ -89,7 +91,6 @@ app
   .route('/api/products')
   .get(productController.listProducts)
   .post(productController.postProduct);
-
 app.get('/api/products/:id', productController.getProduct);
 app.get('/api/products/:page/:limit', productController.paginateProduct);
 
@@ -100,9 +101,28 @@ app
   .route('/api/categories')
   .get(categoryController.listCategories)
   .post(categoryController.postCategory);
-
 app.get('/api/categories/:id', categoryController.getCategory);
 app.get('/api/categories/:page/:limit', categoryController.paginateCategory);
+
+/**
+ * Collection routes.
+ */
+app
+  .route('/api/collections')
+  .get(collectionController.listCollections)
+  .post(collectionController.postCollection);
+app.get('/api/collections/:id', collectionController.getCollection);
+app.get('/api/collections/:page/:limit', collectionController.paginateCollection);
+
+/**
+ * Brand routes.
+ */
+app
+  .route('/api/brands')
+  .get(brandController.listBrands)
+  .post(brandController.postBrand);
+app.get('/api/brands/:id', brandController.getBrand);
+app.get('/api/brands/:page/:limit', brandController.paginateBrand);
 
 /**
  * Error Handler.
