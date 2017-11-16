@@ -86,8 +86,11 @@ app.post('/api/upload', upload.single('avatar'), fileController.postFileUpload);
  */
 app
   .route('/api/products')
-  .get(productController.getProducts)
+  .get(productController.listProducts)
   .post(productController.postProduct);
+
+app.get('/api/products/:id', productController.getProduct);
+app.get('/api/products/:page/:limit', productController.paginateProduct);
 
 /**
  * Error Handler.
